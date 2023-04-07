@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
-Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
+Route::get('/', HomeController::class)->name('home');
+Route::get('/kelas', KelasController::class)->name('kelas');
+Route::get('/tentang-kami', TentangKamiController::class)->name('tentang-kami');
 
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/', DashboardController::class)->name('dashboard');
     Route::resources(
         [
             'programs' => ProgramController::class,

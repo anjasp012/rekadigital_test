@@ -21,6 +21,15 @@ class ProgramRequest extends FormRequest
      */
     public function rules(): array
     {
+        if (request()->routeIs('programs.update')) {
+            return [
+                'name' => 'required',
+                'photo' => 'nullable|image',
+                'description' => 'required',
+                'meeting' => 'required',
+                'month' => 'required'
+            ];
+        }
         return [
             'name' => 'required',
             'photo' => 'required|image',

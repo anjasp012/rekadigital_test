@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ask;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
-        return view('pages.kelas');
+        $programs = Program::all();
+        $asks = Ask::all();
+        return view('pages.kelas', compact('programs', 'asks'));
     }
 }

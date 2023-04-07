@@ -10,30 +10,29 @@
                     </div>
                 </div>
                 <div class="row mt-4 g-4">
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <a href="" class="component-program card border-0 shadow">
-                            <div class="card-body">
-                                <div class="card-thumbnail rounded-4">
-                                    <div class="img-thumbnail border-0"
-                                        style="background-image: url('/images/program-1.png');"></div>
+                    @forelse ($programs as $program)
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                            <a href="" class="component-program card border-0 shadow">
+                                <div class="card-body">
+                                    <div class="card-thumbnail rounded-4">
+                                        <div class="img-thumbnail border-0"
+                                            style="background-image: url('{{ $program->getPicture() }}');"></div>
+                                    </div>
+                                    <h5 class="card-title my-3">
+                                        {{ $program->name }}
+                                    </h5>
+                                    <p class="card-subtitle text-secondary">
+                                        <td>{!! Str::words($program->description, 50, '...') !!}</td>
+                                    </p>
+                                    <div class="card-detail">
+                                        <p class="mb-0">{{ $program->meeting }} Pertemuan</p>
+                                        <p class="mb-0">{{ $program->month }} Bulan</p>
+                                    </div>
                                 </div>
-                                <h5 class="card-title my-3">
-                                    Kursus Menjahit (Tingkat Dasar)
-                                </h5>
-                                <p class="card-subtitle text-secondary">
-                                    Dalam kursus ini, peserta kursus akan mempelajari dasar-dasar menjahit dan
-                                    memperoleh keterampian serta kepercayaan diri untuk memulai menjahit dan membuat
-                                    beberapa produk. Kursus ini akan membahas berbagai jenis kain dan cara memilih kain
-                                    yang tepat. Peserta kursus akan belajar cara memotong kain secara akurat dan cara
-                                    menata dan menyematkan pola.
-                                </p>
-                                <div class="card-detail">
-                                    <p class="mb-0">62 Pertemuan</p>
-                                    <p class="mb-0">5 Bulan</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    @empty
+                    @endforelse
                 </div>
             </div>
         </section>
@@ -56,8 +55,8 @@
                             </div>
                         </div>
                         <!-- <img src="/images/section-now.png" class="w-100" alt="">
-                        <div class="position-absolute top-50 start-50 translate-middle">
-                        </div> -->
+                                                            <div class="position-absolute top-50 start-50 translate-middle">
+                                                            </div> -->
                     </div>
                 </div>
             </div>
@@ -75,26 +74,24 @@
                 <div class="row mt-4 justify-content-center">
                     <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
                         <div class="accordion accordion-company" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Apakah ?
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <strong>This is the first item's accordion body.</strong> It is shown by
-                                        default, until the collapse plugin adds the appropriate classes that we use to
-                                        style each element. These classes control the overall appearance, as well as the
-                                        showing and hiding via CSS transitions. You can modify any of this with custom
-                                        CSS or overriding our default variables. It's also worth noting that just about
-                                        any HTML can go within the <code>.accordion-body</code>, though the transition
-                                        does limit overflow.
+                            @forelse ($asks as $ask)
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#{{ $ask->title }}" aria-expanded="true"
+                                            aria-controls="{{ $ask->title }}">
+                                            {{ $ask->title }}
+                                        </button>
+                                    </h2>
+                                    <div id="{{ $ask->title }}" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            {{ $ask->description }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @empty
+                            @endforelse
                         </div>
                     </div>
                 </div>

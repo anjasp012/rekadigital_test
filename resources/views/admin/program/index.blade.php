@@ -41,8 +41,8 @@
                                     <tr>
                                         <th scope="row">{{ $key + 1 }}</th>
                                         <td>{{ $program->name }}</td>
-                                        <td><img src="{{ asset($program->photo) }}" class="w-25" alt=""></td>
-                                        <td>{{ $program->description }}</td>
+                                        <td><img src="{{ $program->getPicture() }}" class="w-25" alt=""></td>
+                                        <td>{!! Str::words($program->description, 20, '...') !!}</td>
                                         <td>{{ $program->meeting }}</td>
                                         <td>{{ $program->month }}</td>
                                         <td>

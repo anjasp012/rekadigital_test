@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AskRequest;
+use App\Models\Ask;
 use Illuminate\Http\Request;
 
 class AskController extends Controller
@@ -12,7 +14,8 @@ class AskController extends Controller
      */
     public function index()
     {
-        return view('admin.pertanyaan.index');
+        $asks = Ask::all();
+        return view('admin.pertanyaan.index', compact('asks'));
     }
 
     /**
@@ -26,9 +29,12 @@ class AskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AskRequest $request)
     {
-        //
+        $data = $request->all();
+        Ask::create($data);
+
+        return redirect()->route('pertanyaan.index');
     }
 
     /**
@@ -36,7 +42,6 @@ class AskController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -44,15 +49,21 @@ class AskController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ask = Ask::findOrFail($id);
+        return view('admin.pertanyaan.edit', compact('ask'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AskRequest $request, string $id)
     {
-        //
+        $ask = Ask::findOrFail($id);
+        $data = $request->all();
+
+        $ask->update($data);
+
+        return redirect()->route('pertanyaan.index');
     }
 
     /**

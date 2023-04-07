@@ -54,15 +54,24 @@ class ProgramController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $program = Program::findOrFail($id);
+        return view('admin.program.edit', compact('program'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProgramRequest $request, string $id)
     {
-        //
+        $program = Program::findOrFail($id);
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($request->name);
+        $data['photo'] = $request->file('photo') ? $request->file('photo')->store('assets/program', 'public') : $program->photo;
+
+        $program->update($data);
+
+        return redirect()->route('programs.index');
     }
 
     /**
