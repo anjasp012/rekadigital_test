@@ -1,0 +1,11 @@
+@import 'bootstrap/scss/bootstrap';
+
+@import "global";
+@import "fonts";
+@import "navbar";
+
+@import "pages/home";
+@import "pages/kelas";
+@import "pages/tentang";
+
+@import "components/program";

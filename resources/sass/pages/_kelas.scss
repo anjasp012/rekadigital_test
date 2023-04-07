@@ -1,0 +1,87 @@
+.page-kelas {
+    .section-title {
+        font-size: 38px;
+        @include media-breakpoint-down(lg) {
+            font-size: 22px;
+        }
+    }
+    .section-subtitle {
+        font-size: 16px;
+        @include media-breakpoint-down(lg) {
+            font-size: 14px;
+        }
+    }
+
+    .company-programs {
+        margin-top: 60px;
+        .component-program {
+            .card-body{
+                .card-thumbnail {
+                    width: 100%;
+                    height: 220px;
+                    @include media-breakpoint-down(lg) {
+                        height: 132px;
+                    };
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+
+    .company-join-now {
+        margin-top: 80px;
+        .thumbnail-now {
+            width: 100%;
+            height: 380px;
+            @include media-breakpoint-down(lg) {
+                height: 268px;
+            }
+            overflow: hidden;
+            .img-now{
+                width: 100%;
+                height: 100%;
+                background-position: center;
+                background-size: cover;
+            }
+        }
+        .btn-join-now {
+            font-size: 16px;
+            @include media-breakpoint-down(lg) {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .company-asked {
+        margin-top: 60px;
+        .accordion-company {
+            .accordion-item{
+                border: 0px;
+                border-bottom: 2px solid #000000;
+                border-radius: 0px;
+                .accordion-header{
+                    button{
+                        font-size: 20px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        @include media-breakpoint-down(lg) {
+                            font-size: 16px;
+                        }
+                        font-weight: 500;
+                        background-color: white;
+                        color: #1877F2;
+                    }
+                }
+                .accordion-body {
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    font-size: 16px;
+                    @include media-breakpoint-down(lg) {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+}

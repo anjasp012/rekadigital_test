@@ -1,0 +1,19 @@
+.navbar-company {
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .btn-daftar-kursus{
+        font-size: 16px;
+    }
+
+    .navbar-nav {
+        .nav-item {
+            @include media-breakpoint-up(lg) {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    }
+}

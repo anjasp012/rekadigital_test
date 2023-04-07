@@ -1,0 +1,56 @@
+.page-tentang {
+    .section-title {
+        font-size: 38px;
+        @include media-breakpoint-down(lg) {
+            font-size: 22px;
+        }
+    }
+    .section-subtitle {
+        font-size: 16px;
+        @include media-breakpoint-down(lg) {
+            font-size: 14px;
+        }
+    }
+    .company-header {
+        margin-top: -46px;
+        .header-thumbnail {
+            width: 100%;
+            height: 530px;
+            @include media-breakpoint-down(lg) {
+                height: 300px;
+            };
+            overflow: hidden;
+            .img-header {
+                width: 100%;
+                height: 100%;
+                background-position: center;
+                background-size: cover;
+            }
+        }
+    }
+
+    .company-join-now {
+        margin-top: 80px;
+        .thumbnail-now {
+            width: 100%;
+            height: 380px;
+            @include media-breakpoint-down(lg) {
+                height: 268px;
+            }
+            overflow: hidden;
+            .img-now{
+                width: 100%;
+                height: 100%;
+                background-position: center;
+                background-size: cover;
+            }
+        }
+        .btn-join-now {
+            font-size: 16px;
+            @include media-breakpoint-down(lg) {
+                font-size: 14px;
+            }
+        }
+    }
+
+}

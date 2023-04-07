@@ -1,0 +1,41 @@
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+@media (min-width: 1400px) {
+    .container {
+      max-width: 1580px;
+    }
+  }
+
+.page-content {
+    margin-top: 120px;
+}
+
+footer {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    border-top: 1px solid #E4E4E4;
+    margin-top: 70px;
+    background-color: #051830;
+    color: #ffffff;
+    .footer-brand {
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .footer-title {
+        font-weight: 500;
+        font-size: 18px;
+        @include media-breakpoint-down(lg) {
+            font-size: 16px;
+        }
+    }
+    .list-unstyled {
+        li {
+            margin-bottom: 10px;
+        }
+        @include media-breakpoint-down(lg) {
+            font-size: 14px;
+        }
+    }
+}

@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AskController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\TentangKamiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +19,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
+Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    Route::resources(
+        [
+            'programs' => ProgramController::class,
+            'pertanyaan' => AskController::class,
+        ]
+    );
 });
+
+Auth::routes();
